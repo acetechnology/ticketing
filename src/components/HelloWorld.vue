@@ -38,7 +38,7 @@
       </p>
     </form>
 
-    <div id="ticket"></div>
+    <img src="" id="ticket" style="width: 100%" />
   </div>
 </template>
 
@@ -126,7 +126,11 @@ export default {
       this.$v.$touch();
       if (!this.$v.$invalid) {
         html2canvas(document.querySelector("#capture")).then((canvas) => {
-          document.querySelector("#ticket").appendChild(canvas);
+          // document.querySelector("#ticket")
+          // document.querySelector("#ticket").appendChild(canvas);
+          // var DOM_img = document.createElement("img");
+          document.querySelector("#ticket").src = canvas.toDataURL();
+          // document.appendChild(DOM_img);
         });
         this.code = this.generateCode();
         this.resetFormData();
