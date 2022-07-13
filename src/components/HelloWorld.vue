@@ -3,24 +3,16 @@
     <div id="capture">
       <img width="600px" alt="Ticket" :src="img" />
       <h2 v-show="showCode" class="bosco">#{{ code }}</h2>
-      <br />
+      <!-- <br />
       <p v-show="false" class="bosco-details">
         {{ event.tableFor }} -
         <span
           ><strong>{{ event.name.toUpperCase() }}</strong></span
         >
-      </p>
+      </p> -->
     </div>
     <h1>GENERATE E-TICKET</h1>
     <form @submit.prevent="createEvent">
-      <BaseInput
-        v-model="event.name"
-        type="text"
-        placeholder="Name"
-        class="field"
-        :class="{ error: $v.event.name.$error }"
-        @blur="$v.event.name.$touch()"
-      />
       <BaseSelect
         :options="tableList"
         v-model="event.tableFor"
@@ -45,7 +37,6 @@
 <script>
 import ticketCode from "ticket-code";
 import { required } from "vuelidate/lib/validators";
-import BaseInput from "../components/BaseInput.vue";
 import BaseButton from "../components/BaseButton.vue";
 import BaseSelect from "../components/BaseSelect.vue";
 import html2canvas from "html2canvas";
@@ -67,12 +58,11 @@ export default {
         "VIP TABLE FOR #TEN",
         "VVIP",
       ],
-      event: { name: "", tableFor: "" },
+      event: { tableFor: "" },
     };
   },
   validations: {
     event: {
-      name: { required },
       tableFor: { required },
     },
   },
@@ -137,11 +127,10 @@ export default {
       }
     },
     resetFormData() {
-      this.event = { name: "", tableFor: "" };
+      this.event = { tableFor: "" };
     },
   },
   components: {
-    BaseInput,
     BaseSelect,
     BaseButton,
   },
