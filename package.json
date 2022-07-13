@@ -9,7 +9,10 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "html2canvas": "^1.4.1",
+    "ticket-code": "^0.1.0",
+    "vue": "^2.6.11",
+    "vuelidate": "^0.7.7"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.15",
